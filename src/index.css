@@ -1,8 +1,14 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-size: 14px;
+  font-family: monospace;
   color: #252525;
+}
+
+button,
+input {
+  font-family: monospace;
 }
 
 a {
@@ -20,7 +26,7 @@ a {
   text-transform: uppercase;
   margin: 35px auto;
   padding: 10px;
-  border: 1px solid rgba(0,0,0,.29);
+  border: 1px solid rgba(0, 0, 0, 0.29);
   cursor: pointer;
   background: #fff;
   font-size: 16px;
@@ -29,7 +35,7 @@ a {
 }
 
 .btn:hover {
-  border-color: rgba(0,0,0,.5);
+  border-color: rgba(0, 0, 0, 0.5);
   text-decoration: none;
 }
 
@@ -54,6 +60,13 @@ a {
   text-decoration: none;
 }
 
+.nav-questions ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-decoration: none;
+}
+
 .nav li:first-child {
   padding-left: 0;
 }
@@ -69,14 +82,41 @@ li {
 }
 
 .avatar {
-  height: 50px;
   border-radius: 25px;
   margin: 10px;
 }
 
-.tweet {
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard {
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+  width: 56%;
+  display: flex;
+  flex-direction: column;
+}
+
+.question-container {
   width: 100%;
   max-width: 590px;
+}
+
+.question-author {
+  border: 1px solid black;
+  padding: 10px;
+  vertical-align: center;
+  background: aliceblue;
+  border: 1px solid #dad7d7;
+}
+
+.question-avatar {
+  width: 12%;
+}
+
+.question {
   padding: 10px;
   display: flex;
   margin: 0 auto;
@@ -85,66 +125,64 @@ li {
   cursor: pointer;
 }
 
-.tweet-info {
+.question div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.question-summary {
   margin: 10px;
   display: flex;
   flex-direction: column;
+  width: 65%;
+}
+
+.question-preview {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.question-navigate button {
+  border-radius: 4px;
+}
+
+.question-title {
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.2em;
 }
 
 /* Hacky but less typing in the video */
-.tweet-info > div > span:first-child {
+.question-info > div > span:first-child {
   font-weight: bold;
   margin-right: 5px;
 }
-.tweet-info > div > span:nth-child(2) {
+.question-info > div > span:nth-child(2) {
   color: #969696;
   font-size: 16px;
 }
-.tweet-info > div > div {
+.question-info > div > div {
   color: #969696;
   font-size: 15px;
 }
-.tweet-info > div > p {
+.question-info > div > p {
   font-size: 18px;
   margin: 10px 0;
 }
-.tweet-icons {
-  display: flex;
-  align-items: center;
-}
-.tweet-icons > span {
-  color: #969696;
-  margin: 0 15px 0 5px;
-  font-size: 18px !important;
-}
-.tweet-icon {
-  font-size: 27px;
-  color: #697784;
-}
-.tweet-icon:hover {
-  color: #00b5d6;
-  cursor: pointer;
-}
-.replying-to {
-  border: none;
-  background: transparent;
-  margin: 0;
-  padding: 0;
-  color: #969696;
-  cursor: pointer;
+
+.new-question-container {
+  border: 1px solid #dad7d7;
 }
 
-.heart-button {
-  background: transparent;
-  border: none;
-}
-
-.new-tweet {
+.new-question {
   width: 100%;
   max-width: 590px;
   margin: 0 auto;
+  flex-direction: column;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .textarea {
@@ -152,12 +190,59 @@ li {
   border: 1px solid #dad7d7;
   padding: 10px;
   font-size: 15px;
-  height: 100px;
+  height: 50px;
 }
 
-.tweet-length {
+.question-length {
   text-align: right;
   margin-top: 10px;
   font-size: 20px;
-  color: #C3392A;
+  color: #c3392a;
+}
+
+.login-page {
+  transform: translateY(30vh);
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  position: absolute;
+  width: 15%;
+  min-height: 150px;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: space-evenly;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-mask-origin: border-box;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.29);
+  border-radius: 4px;
+  background-color: #9696962b;
+}
+
+.login-user {
+  width: 75%;
+}
+
+.login-btn {
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 0, 0, 0.29);
+  cursor: pointer;
+  background: #fff;
+  font-size: 16px;
+  border-radius: 4px;
+  position: relative;
+  width: 75%;
+}
+
+.leaderboard-score {
+  display: flex;
+  flex-direction: column;
 }
