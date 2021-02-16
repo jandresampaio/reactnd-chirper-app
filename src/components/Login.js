@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
 
 class Login extends Component {
+  noUserSelectedValue = "nouserselectoption";
   state = {
-    selectedUser: null
+    selectedUser: this.noUserSelectedValue
   };
 
   handleSubmit(e) {
@@ -35,11 +36,19 @@ class Login extends Component {
               onChange={(e) => this.onSelectedUserChanged(e)}
               value={selectedUser}
             >
-              <option disabled selected value>
-                Select an option:
+              <option
+                key={this.noUserSelectedValue}
+                value={this.noUserSelectedValue}
+                disabled
+              >
+                Select user:
               </option>
-              {Object.values(users).map(({ id, name }) => (
-                <option key={id} value={id}>
+              {Object.values(users).map(({ id, name, avatarURL }) => (
+                <option
+                  key={id}
+                  value={id}
+                  style={{ backgroundImage: `url(${avatarURL})` }}
+                >
                   {name}
                 </option>
               ))}
@@ -47,7 +56,7 @@ class Login extends Component {
             <button
               className="login-btn"
               type="submit"
-              disabled={!selectedUser}
+              disabled={selectedUser == this.noUserSelectedValue}
             >
               Login
             </button>

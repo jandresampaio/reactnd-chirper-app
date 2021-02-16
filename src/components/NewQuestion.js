@@ -41,29 +41,31 @@ class NewQuestion extends Component {
     return (
       <div className="new-question-container">
         <h3 className="center">Create New Question</h3>
-        <form className="new-question" onSubmit={this.handleSubmit}>
-          <input
-            placeholder="Enter Option One Text Here"
-            value={optionOneText}
-            onChange={(e) => this.handleChange(e, "optionOneText")}
-            className="textarea"
-            maxLength={280}
-          />
-          OR
-          <input
-            placeholder="Enter Option Two Text Here"
-            value={optionTwoText}
-            onChange={(e) => this.handleChange(e, "optionTwoText")}
-            className="textarea"
-            maxLength={280}
-          />
-          <button
-            className="btn"
-            type="submit"
-            disabled={optionOneText === "" || optionTwoText === ""}
-          >
-            Submit
-          </button>
+        <form onSubmit={this.handleSubmit}>
+          <div className="new-question">
+            <input
+              placeholder="Enter Option One Text Here"
+              value={optionOneText}
+              onChange={(e) => this.handleChange(e, "optionOneText")}
+              className="new-question-option"
+              maxLength={280}
+            />
+            OR
+            <input
+              placeholder="Enter Option Two Text Here"
+              value={optionTwoText}
+              onChange={(e) => this.handleChange(e, "optionTwoText")}
+              className="new-question-option"
+              maxLength={280}
+            />
+            <button
+              class="new-question-submit-btn"
+              type="submit"
+              disabled={optionOneText === "" || optionTwoText === ""}
+            >
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     );

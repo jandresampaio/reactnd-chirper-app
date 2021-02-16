@@ -26,7 +26,7 @@ class App extends Component {
             {authedUser && (
               <div>
                 <Nav authedUser={users[authedUser]} />
-                <div>
+                <div className="page-content">
                   <Route path="/" exact component={Dashboard} />
                   <Route path="/question/:id" exact component={QuestionPage} />
                   <Route path="/add" component={NewQuestion} />

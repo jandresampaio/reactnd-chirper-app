@@ -20,7 +20,7 @@ class Dashboard extends Component {
 
   render() {
     const { questions, authedUser } = this.props;
-    const { showAnswered } = this.state;
+    const { showAnswered = false } = this.state;
     const questionsWithStatus = Object.entries(questions).reduce(
       (acc, [id, question]) => {
         const answered = isQuestionAnswered(question, authedUser);
@@ -49,6 +49,7 @@ class Dashboard extends Component {
           <nav className="nav-questions">
             <ul>
               <li
+                className={showAnswered ? "" : "selected"}
                 onClick={(e) =>
                   this.handleFilterChange({ showAnswered: false })
                 }
@@ -56,6 +57,7 @@ class Dashboard extends Component {
                 Unanswered Questions
               </li>
               <li
+                className={showAnswered ? "selected" : ""}
                 onClick={(e) => this.handleFilterChange({ showAnswered: true })}
               >
                 Answered Questions

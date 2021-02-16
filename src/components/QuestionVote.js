@@ -48,11 +48,7 @@ class QuestionVote extends Component {
             </label>
           </div>
         ))}
-
-        <div>Selected option is : {this.state.selectedOption}</div>
-        <button className="btn btn-default" type="submit">
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </form>
     );
   }

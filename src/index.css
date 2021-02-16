@@ -67,6 +67,17 @@ a {
   text-decoration: none;
 }
 
+.nav-questions li {
+  cursor: pointer;
+}
+
+.nav-questions li.selected,
+.nav-questions li:hover {
+  border: 1px dashed #dad7d7;
+  border-radius: 4px;
+  background-color: aliceblue;
+}
+
 .nav li:first-child {
   padding-left: 0;
 }
@@ -82,8 +93,9 @@ li {
 }
 
 .avatar {
-  border-radius: 25px;
+  border-radius: 100px;
   margin: 10px;
+  width: 75%;
 }
 
 .dashboard-container {
@@ -91,17 +103,21 @@ li {
   justify-content: center;
 }
 
+.page-content {
+  display: flex;
+  justify-content: center;
+}
+
 .dashboard {
   border: 1px solid #dad7d7;
   border-radius: 3px;
-  width: 56%;
   display: flex;
   flex-direction: column;
+  width: 70%;
 }
 
 .question-container {
   width: 100%;
-  max-width: 590px;
 }
 
 .question-author {
@@ -123,24 +139,28 @@ li {
   border: 1px solid #dad7d7;
   border-radius: 3px;
   cursor: pointer;
+  align-items: center;
 }
 
-.question div {
+.question-preview {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 88%;
+  align-items: center;
 }
 
 .question-summary {
   margin: 10px;
   display: flex;
   flex-direction: column;
-  width: 65%;
+  width: 75%;
 }
 
-.question-preview {
+.question-preview-text {
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 300px;
 }
 
 .question-navigate button {
@@ -173,6 +193,7 @@ li {
 
 .new-question-container {
   border: 1px solid #dad7d7;
+  width: 70%;
 }
 
 .new-question {
@@ -185,12 +206,17 @@ li {
   align-items: center;
 }
 
-.textarea {
+.new-question-option {
   border-radius: 4px;
   border: 1px solid #dad7d7;
   padding: 10px;
   font-size: 15px;
-  height: 50px;
+  height: 25px;
+  width: 300px;
+}
+
+.new-question-submit-btn {
+  margin: 20px;
 }
 
 .question-length {
@@ -211,7 +237,7 @@ li {
 
 .login-form {
   position: absolute;
-  width: 15%;
+  width: 29%;
   min-height: 150px;
   display: -ms-flexbox;
   display: flex;
@@ -242,7 +268,23 @@ li {
   width: 75%;
 }
 
-.leaderboard-score {
+.leaderboard-container {
   display: flex;
   flex-direction: column;
+  width: 70%;
+}
+
+.leaderboard-summary {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.leaderboard-score {
+  width: 40px;
+  height: 40px;
+  border-radius: 332px;
+  text-align: center;
+  line-height: 40px;
+  border: 1px solid #dad7d7;
 }
