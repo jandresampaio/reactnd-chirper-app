@@ -8,10 +8,10 @@ export default function QuestionResults(props) {
   return (
     <ul>
       {[optionOne, optionTwo].map((opt, i) => (
-        <li key={i}>
+        <div key={i}>
           {opt.text} - {opt.votes.length} out of {totalVotes} - (
           {(opt.votes.length * 100) / totalVotes})%
-        </li>
+        </div>
       ))}
     </ul>
   );

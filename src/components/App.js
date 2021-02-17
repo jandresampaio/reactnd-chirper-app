@@ -21,11 +21,11 @@ class App extends Component {
       <Router>
         <Fragment>
           <LoadingBar />
-          <div className="container">
+          <div className="app-container">
             {!loading && !authedUser && <Login />}
             {authedUser && (
-              <div>
-                <Nav authedUser={users[authedUser]} />
+              <div className="app-content">
+                <Nav />
                 <div className="page-content">
                   <Route path="/" exact component={Dashboard} />
                   <Route path="/question/:id" exact component={QuestionPage} />

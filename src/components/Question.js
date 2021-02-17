@@ -33,14 +33,17 @@ class Question extends Component {
               className="avatar"
             />
           </div>
-          {!showDetail && (
-            <QuestionPreview
-              question={question}
-              onGotoQuestion={(e, id) => this.goToQuestion(e, id)}
-            />
-          )}
-          {showDetail && !answered && <QuestionVote id={id} />}
-          {showDetail && answered && <QuestionResults question={question} />}
+          <div className="question-body">
+            <div className="question-title">Would you rather...</div>
+            {!showDetail && (
+              <QuestionPreview
+                question={question}
+                onGotoQuestion={(e, id) => this.goToQuestion(e, id)}
+              />
+            )}
+            {showDetail && !answered && <QuestionVote id={id} />}
+            {showDetail && answered && <QuestionResults question={question} />}
+          </div>
         </div>
       </div>
     );

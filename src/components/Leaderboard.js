@@ -3,27 +3,12 @@ import { connect } from "react-redux";
 
 class Leaderboard extends Component {
   render() {
-    const { users } = this.props;
-    const userSummary = Object.values(users).map(
-      ({ answers, questions, name, avatarURL }) => {
-        const numAnswers = (answers && Object.keys(answers).length) || 0;
-        const numQuestions = (questions && questions.length) || 0;
-        const score = numAnswers + numQuestions;
-        return {
-          name,
-          avatarURL,
-          numAnswers,
-          numQuestions,
-          score,
-          color: score >= 10 ? "gold" : score >= 5 ? "silver" : "#c1997d"
-        };
-      }
+    const { users, questions } = this.props;
+    const userSummary = this.initializeUserSummary(users);
+    const sortedByScore = this.getUpdatedScoresFromQuestions(
+      questions,
+      userSummary
     );
-
-    const sortedByScore = Object.values(userSummary).sort(
-      (a, b) => b.score - a.score
-    );
-
     return (
       <div className="leaderboard-container">
         {sortedByScore.map(
@@ -44,7 +29,10 @@ class Leaderboard extends Component {
                     <div>Created Questions: {numQuestions}</div>
                   </div>
                   <div
-                    style={{ backgroundColor: color }}
+                    style={{
+                      backgroundColor:
+                        score >= 10 ? "gold" : score >= 5 ? "silver" : "#c1997d"
+                    }}
                     className="leaderboard-score"
                   >
                     {score}
@@ -56,6 +44,38 @@ class Leaderboard extends Component {
         )}
       </div>
     );
+  }
+
+  getUpdatedScoresFromQuestions(questions, userSummary) {
+    let allAnswers = [];
+    Object.values(questions).forEach((question) => {
+      const { author, optionOne, optionTwo } = question;
+      allAnswers = [...allAnswers, ...optionOne.votes, ...optionTwo.votes];
+      userSummary[author].numQuestions += 1;
+    });
+    allAnswers.forEach((user) => (userSummary[user].numAnswers += 1));
+    Object.values(userSummary).forEach(
+      (user) => (user.score = user.numQuestions + user.numAnswers)
+    );
+
+    const sortedByScore = Object.values(userSummary).sort(
+      (a, b) => b.score - a.score
+    );
+    return sortedByScore;
+  }
+
+  initializeUserSummary(users) {
+    return Object.values(users).reduce((acc, { id, name, avatarURL }) => {
+      acc[id] = {
+        id,
+        name,
+        avatarURL,
+        numAnswers: 0,
+        numQuestions: 0,
+        score: () => acc[id].numAnswers + acc[id].numQuestions
+      };
+      return acc;
+    }, {});
   }
 }
 

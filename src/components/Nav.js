@@ -1,36 +1,45 @@
-import React from "react";
+import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import { logout } from "../actions/authedUser";
+class Nav extends Component {
+  logout() {
+    this.props.dispatch(logout(this.props.authedUser.id));
+  }
 
-export default function Nav(props) {
-  return (
-    <nav className="nav">
-      <ul>
-        <li>
-          <NavLink to="/" exact activeClassName="active">
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/add" exact>
-            New Question
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/leaderboard" exact>
-            Leaderboard
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/" exact>
-            Hello {props.authedUser.name}
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/" exact>
-            Logout
-          </NavLink>
-        </li>
-      </ul>
-    </nav>
-  );
+  render() {
+    const { authedUser, users } = this.props;
+    return (
+      <nav className="nav">
+        <ul>
+          <li>
+            <NavLink to="/" exact activeClassName="active">
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/add" exact>
+              New Question
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/leaderboard" exact>
+              Leaderboard
+            </NavLink>
+          </li>
+          <li>Hello {users[authedUser].name}</li>
+          <li onClick={(e) => this.logout()}>Logout</li>
+        </ul>
+      </nav>
+    );
+  }
 }
+
+function mapStateToProps({ authedUser, users }) {
+  return {
+    authedUser,
+    users
+  };
+}
+
+export default connect(mapStateToProps)(Nav);

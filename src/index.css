@@ -16,10 +16,16 @@ a {
   color: #252525;
 }
 
-.container {
+.app-container {
   max-width: 1000px;
   margin: 0 auto;
   padding: 10px;
+}
+
+.app-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .btn {
@@ -106,6 +112,7 @@ li {
 .page-content {
   display: flex;
   justify-content: center;
+  width: 70%;
 }
 
 .dashboard {
@@ -113,7 +120,6 @@ li {
   border-radius: 3px;
   display: flex;
   flex-direction: column;
-  width: 70%;
 }
 
 .question-container {
@@ -146,7 +152,6 @@ li {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 88%;
   align-items: center;
 }
 
@@ -163,7 +168,7 @@ li {
   max-width: 300px;
 }
 
-.question-navigate button {
+button {
   border-radius: 4px;
 }
 
@@ -171,6 +176,23 @@ li {
   font-style: italic;
   font-weight: 600;
   font-size: 1.2em;
+  margin-left: 10px;
+}
+
+.question-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 88%;
+}
+
+.question-vote {
+  display: flex;
+  justify-content: space-between;
+}
+
+.question-action {
+  align-self: normal;
 }
 
 /* Hacky but less typing in the video */
@@ -193,7 +215,7 @@ li {
 
 .new-question-container {
   border: 1px solid #dad7d7;
-  width: 70%;
+  width: 100%;
 }
 
 .new-question {
@@ -271,7 +293,6 @@ li {
 .leaderboard-container {
   display: flex;
   flex-direction: column;
-  width: 70%;
 }
 
 .leaderboard-summary {

@@ -5,12 +5,11 @@ export default function QuestionPreview(props) {
   return (
     <div class="question-preview">
       <div className="question-summary">
-        <div className="question-title">Would you rather...</div>
         <div className="question-preview-text">
           ...{question.optionOne.text}
         </div>
       </div>
-      <div className="question-navigate">
+      <div className="question-action">
         <button onClick={(e) => onGotoQuestion(e, question.id)}>
           View Poll
         </button>

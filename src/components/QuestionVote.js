@@ -35,20 +35,27 @@ class QuestionVote extends Component {
     const options = [optionOne, optionTwo];
     return (
       <form onSubmit={(e) => this.handleVote(e)}>
-        {options.map((opt, i) => (
-          <div key={i} className="radio">
-            <label>
-              <input
-                type="radio"
-                value={i}
-                checked={selectedOption === i}
-                onChange={(e) => this.onValueChange(e)}
-              />
-              {opt.text}
-            </label>
+        <div className="question-vote">
+          <div className="question-vote-options">
+            {options.map((opt, i) => (
+              <div key={i} className="radio">
+                <label>
+                  <input
+                    type="radio"
+                    value={i}
+                    checked={selectedOption == i}
+                    onChange={(e) => this.onValueChange(e)}
+                  />
+                  {opt.text}
+                </label>
+              </div>
+            ))}
           </div>
-        ))}
-        <button type="submit">Submit</button>
+
+          <div className="question-action">
+            <button type="submit">Submit</button>
+          </div>
+        </div>
       </form>
     );
   }
