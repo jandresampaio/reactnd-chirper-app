@@ -9,6 +9,9 @@ import Login from "./Login";
 import QuestionPage from "./QuestionPage";
 import NewQuestion from "./NewQuestion";
 import Leaderboard from "./Leaderboard";
+import Chart from "chart.js";
+
+Chart.defaults.global.defaultFontFamily = "monospace";
 
 class App extends Component {
   componentDidMount() {
