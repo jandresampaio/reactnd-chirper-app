@@ -10,6 +10,11 @@ class Leaderboard extends Component {
 
   componentDidMount() {
     const { users, questions } = this.props;
+    this.setChart(users, questions);
+  }
+
+  setChart(users, questions) {
+    if (!questions || !Object.keys(questions).length) return;
     const userSummary = this.initializeUserSummary(users);
     const sortedByScore = this.getUpdatedScoresFromQuestions(
       questions,
@@ -19,6 +24,25 @@ class Leaderboard extends Component {
     this.myChart = new Chart(this.canvasRef.current, {
       type: "bar",
       height: 400,
+      plugins: [
+        {
+          afterDatasetDraw: (chart) => {
+            var ctx = chart.chart.ctx;
+            var xAxis = chart.scales["x-axis-0"];
+            xAxis.ticks.forEach((value, index) => {
+              var x = xAxis.getPixelForTick(index);
+              var yAxis = chart.scales["y-axis-0"];
+              var image = new Image(30, 30);
+              image.src = userSummary[value].avatarURL;
+              ctx.drawImage(image, x - 100, yAxis.bottom + 2, 50, 50);
+              image.onload = () => {
+                ctx.drawImage(image, x - 100, yAxis.bottom + 2, 50, 50);
+                ctx.restore();
+              };
+            });
+          }
+        }
+      ],
       options: {
         layout: {
           padding: {
@@ -50,7 +74,7 @@ class Leaderboard extends Component {
       },
 
       data: {
-        labels: sortedByScore.map((d) => d.name),
+        labels: sortedByScore.map((d) => d.id),
         datasets: [
           {
             label: "Created Questions",

@@ -33,7 +33,9 @@ class Nav extends Component {
             <span> Hello {" " + user.name}</span>
           </li>
           <li className="nav-logout" onClick={(e) => this.logout()}>
-            Logout
+            <NavLink to="/" exact activeClassName="">
+              Logout
+            </NavLink>
           </li>
         </ul>
       </nav>
