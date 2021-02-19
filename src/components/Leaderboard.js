@@ -19,22 +19,6 @@ class Leaderboard extends Component {
     this.myChart = new Chart(this.canvasRef.current, {
       type: "bar",
       height: 400,
-      plugins: [
-        {
-          afterDraw: (chart) => {
-            var ctx = chart.chart.ctx;
-            var xAxis = chart.scales["x-axis-0"];
-            xAxis.ticks.forEach((value, index) => {
-              var x = xAxis.getPixelForTick(index);
-              var yAxis = chart.scales["y-axis-0"];
-              var image = new Image(30, 30);
-              image.src = userSummary[value].avatarURL;
-              ctx.drawImage(image, x - 12, yAxis.bottom + 10);
-              ctx.restore();
-            });
-          }
-        }
-      ],
       options: {
         layout: {
           padding: {

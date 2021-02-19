@@ -13,7 +13,7 @@ export default class QuestionResults extends Component {
     const { optionOne, optionTwo } = question;
     const optionOneVotes = optionOne.votes.length;
     const optionTwoVotes = optionTwo.votes.length;
-    const authedUserOption = optionOne.votes.includes(authedUserOption)
+    const authedUserOption = optionOne.votes.includes(authedUser)
       ? optionOne
       : optionTwo;
     const totalVotes = optionOneVotes + optionTwoVotes;

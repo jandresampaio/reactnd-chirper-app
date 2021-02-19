@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
+import { handleReceiveQuestions } from "../actions/questions";
 
 class Login extends Component {
   noUserSelectedValue = "nouserselectoption";
@@ -13,6 +14,7 @@ class Login extends Component {
     const { dispatch } = this.props;
     const { selectedUser } = this.state;
     dispatch(setAuthedUser(selectedUser));
+    dispatch(handleReceiveQuestions());
   }
 
   onSelectedUserChanged(e) {
@@ -43,7 +45,7 @@ class Login extends Component {
               >
                 Select user:
               </option>
-              {Object.values(users).map(({ id, name, avatarURL }) => (
+              {Object.values(users).map(({ id, name }) => (
                 <option key={id} value={id}>
                   {name}
                 </option>
