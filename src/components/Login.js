@@ -44,11 +44,7 @@ class Login extends Component {
                 Select user:
               </option>
               {Object.values(users).map(({ id, name, avatarURL }) => (
-                <option
-                  key={id}
-                  value={id}
-                  style={{ backgroundImage: `url(${avatarURL})` }}
-                >
+                <option key={id} value={id}>
                   {name}
                 </option>
               ))}

@@ -22,13 +22,12 @@ class Leaderboard extends Component {
       plugins: [
         {
           afterDraw: (chart) => {
-            debugger;
             var ctx = chart.chart.ctx;
             var xAxis = chart.scales["x-axis-0"];
             xAxis.ticks.forEach((value, index) => {
               var x = xAxis.getPixelForTick(index);
               var yAxis = chart.scales["y-axis-0"];
-              var image = new Image();
+              var image = new Image(30, 30);
               image.src = userSummary[value].avatarURL;
               ctx.drawImage(image, x - 12, yAxis.bottom + 10);
               ctx.restore();
@@ -67,7 +66,7 @@ class Leaderboard extends Component {
       },
 
       data: {
-        labels: sortedByScore.map((d) => d.id),
+        labels: sortedByScore.map((d) => d.name),
         datasets: [
           {
             label: "Created Questions",
@@ -86,42 +85,6 @@ class Leaderboard extends Component {
 
   render() {
     return <canvas style={{ height: "400px" }} ref={this.canvasRef} />;
-
-    // return (
-    //   <div className="leaderboard-container">
-    //     {sortedByScore.map(
-    //       ({ numAnswers, numQuestions, name, avatarURL, score, color }) => {
-    //         return (
-    //           <div className="question-container">
-    //             <div className="question-author">{name}</div>
-    //             <div className="question">
-    //               <div className="question-avatar">
-    //                 <img
-    //                   src={avatarURL}
-    //                   alt={`Avatar of ${name}`}
-    //                   className="avatar"
-    //                 />
-    //               </div>
-    //               <div className="leaderboard-summary">
-    //                 <div>Answered Questions: {numAnswers}</div>
-    //                 <div>Created Questions: {numQuestions}</div>
-    //               </div>
-    //               <div
-    //                 style={{
-    //                   backgroundColor:
-    //                     score >= 10 ? "gold" : score >= 5 ? "silver" : "#c1997d"
-    //                 }}
-    //                 className="leaderboard-score"
-    //               >
-    //                 {score}
-    //               </div>
-    //             </div>
-    //           </div>
-    //         );
-    //       }
-    //     )}
-    //   </div>
-    // );
   }
 
   getUpdatedScoresFromQuestions(questions, userSummary) {

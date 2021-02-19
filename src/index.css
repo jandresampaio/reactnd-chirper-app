@@ -64,6 +64,7 @@ a {
   flex-direction: row;
   justify-content: flex-start;
   text-decoration: none;
+  align-items: center;
 }
 
 .nav-questions ul {
@@ -74,6 +75,24 @@ a {
 }
 
 .nav-questions li {
+  cursor: pointer;
+}
+
+.nav-user {
+  display: flex;
+  align-items: center;
+}
+
+.nav-user img {
+  width: 30px;
+  border-radius: 250px;
+}
+
+.nav-user span {
+  margin-left: 4px;
+}
+
+.nav-logout {
   cursor: pointer;
 }
 

@@ -9,6 +9,7 @@ class Nav extends Component {
 
   render() {
     const { authedUser, users } = this.props;
+    const user = users[authedUser];
     return (
       <nav className="nav">
         <ul>
@@ -27,8 +28,13 @@ class Nav extends Component {
               Leaderboard
             </NavLink>
           </li>
-          <li>Hello {users[authedUser].name}</li>
-          <li onClick={(e) => this.logout()}>Logout</li>
+          <li className="nav-user">
+            <img src={user.avatarURL} />
+            <span> Hello {" " + user.name}</span>
+          </li>
+          <li className="nav-logout" onClick={(e) => this.logout()}>
+            Logout
+          </li>
         </ul>
       </nav>
     );

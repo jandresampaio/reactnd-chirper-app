@@ -23,7 +23,7 @@ class Question extends Component {
     const { id } = question;
     const answered = isQuestionAnswered(question, authedUser);
     return (
-      <div to={`/question/${id}`} className="question-container">
+      <div className="question-container">
         <div className="question-author">{author.name} asks: </div>
         <div className="question">
           <div className="question-avatar">
@@ -42,7 +42,9 @@ class Question extends Component {
               />
             )}
             {showDetail && !answered && <QuestionVote id={id} />}
-            {showDetail && answered && <QuestionResults question={question} />}
+            {showDetail && answered && (
+              <QuestionResults question={question} authedUser={authedUser} />
+            )}
           </div>
         </div>
       </div>

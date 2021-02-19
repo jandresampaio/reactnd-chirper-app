@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function QuestionPreview(props) {
   const { question, onGotoQuestion } = props;
   return (
-    <div class="question-preview">
+    <Link to={`/question/${question.id}`} className="question-preview">
       <div className="question-summary">
         <div className="question-preview-text">
           ...{question.optionOne.text}
@@ -14,6 +15,6 @@ export default function QuestionPreview(props) {
           View Poll
         </button>
       </div>
-    </div>
+    </Link>
   );
 }
