@@ -1,24 +1,27 @@
 import {
   _getUsers,
-  _getTweets,
-  _saveLikeToggle,
-  _saveTweet,
-} from './_DATA.js'
+  _getQuestions,
+  _saveQuestion,
+  _saveQuestionAnswer
+} from "./_DATA.js";
 
-export function getInitialData () {
-  return Promise.all([
-    _getUsers(),
-    _getTweets(),
-  ]).then(([users, tweets]) => ({
-    users,
-    tweets,
-  }))
+export function getInitialData() {
+  return Promise.all([_getUsers(), _getQuestions()]).then(
+    ([users, questions]) => ({
+      users,
+      questions
+    })
+  );
 }
 
-export function saveLikeToggle (info) {
-  return _saveLikeToggle(info)
+export function getQuestions() {
+  return _getQuestions();
 }
 
-export function saveTweet (info) {
-  return _saveTweet(info)
+export function saveQuestion(info) {
+  return _saveQuestion(info);
+}
+
+export function saveQuestionAnswer(info) {
+  return _saveQuestionAnswer(info);
 }
