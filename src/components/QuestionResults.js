@@ -19,7 +19,7 @@ export default class QuestionResults extends Component {
     const totalVotes = optionOneVotes + optionTwoVotes;
     const labels = [optionOne, optionTwo].map(
       (opt) =>
-        (authedUserOption == opt ? `(You voted) ` : "") +
+        (authedUserOption === opt ? `(You voted) ` : "") +
         `${opt.text} - ${opt.votes.length} out of ${totalVotes} - (${
           (opt.votes.length * 100) / totalVotes
         })%`

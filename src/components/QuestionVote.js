@@ -24,7 +24,7 @@ class QuestionVote extends Component {
 
   onValueChange(e) {
     this.setState({
-      selectedOption: e.target.value
+      selectedOption: Number.parseInt(e.target.value, 10)
     });
   }
 
@@ -43,7 +43,7 @@ class QuestionVote extends Component {
                   <input
                     type="radio"
                     value={i}
-                    checked={selectedOption == i}
+                    checked={selectedOption === i}
                     onChange={(e) => this.onValueChange(e)}
                   />
                   {opt.text}
