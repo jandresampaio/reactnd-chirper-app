@@ -18,7 +18,7 @@ class App extends Component {
     this.props.dispatch(handleInitialData());
   }
   render() {
-    const { authedUser, loading, users } = this.props;
+    const { authedUser, loading } = this.props;
 
     return (
       <Router>

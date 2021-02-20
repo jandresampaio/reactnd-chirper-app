@@ -29,7 +29,7 @@ class Nav extends Component {
             </NavLink>
           </li>
           <li className="nav-user">
-            <img src={user.avatarURL} />
+            <img alt={user.name} src={user.avatarURL} />
             <span> Hello {" " + user.name}</span>
           </li>
           <li className="nav-logout" onClick={(e) => this.logout()}>

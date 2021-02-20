@@ -1,20 +1,12 @@
-# Chirper Project
+Would you rather...
+In the "Would You Rather?" Project is a web app that lets a user play the “Would You Rather?” game. The game goes like this: A user is asked a question in the form: “Would you rather [option A] or [option B] ?”. Answering "neither" or "both" is against the rules.
 
-This repo is a code-along with the first project in the [React Nanodegree program](https://www.udacity.com/course/react-nanodegree--nd019).
+State
+For this application, most of the application’s state is managed by Redux - questions, users and authenticated user.  
+Internal state is maintained inside each controlled component.
 
-Most of the commits in this repository correspond to videos in the program.
+TL;DR
+To get started developing right away:
 
-## Project Setup
-
-* clone the Project - `git@github.com:udacity/reactnd-chirper-app.git`
-* install the dependencies - `npm install`
-
-## Contributing
-
-Because this is a code-along project and the commits correspond to specific videos in the program, we will not be accepting pull requests.
-
-If you feel like there's a major problem, please open an issue to discuss the problem and potential resolution.
-
-## License
-
-MIT
+install all project dependencies with npm install
+start the development server with npm start

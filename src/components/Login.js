@@ -54,7 +54,7 @@ class Login extends Component {
             <button
               className="login-btn"
               type="submit"
-              disabled={selectedUser == this.noUserSelectedValue}
+              disabled={selectedUser === this.noUserSelectedValue}
             >
               Login
             </button>
