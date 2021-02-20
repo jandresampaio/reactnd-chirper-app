@@ -126,6 +126,7 @@ li {
 .dashboard-container {
   display: flex;
   justify-content: center;
+  min-width: 700px;
 }
 
 .page-content {
@@ -139,6 +140,7 @@ li {
   border-radius: 3px;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .question-container {

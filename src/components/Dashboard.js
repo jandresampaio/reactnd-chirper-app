@@ -41,37 +41,33 @@ class Dashboard extends Component {
       [];
 
     return (
-      questionIds.length > 0 && (
-        <div className="dashboard-container">
-          <div className="dashboard">
-            <nav className="nav-questions">
-              <ul>
-                <li
-                  className={showAnswered ? "" : "selected"}
-                  onClick={(e) =>
-                    this.handleFilterChange({ showAnswered: false })
-                  }
-                >
-                  Unanswered Questions
-                </li>
-                <li
-                  className={showAnswered ? "selected" : ""}
-                  onClick={(e) =>
-                    this.handleFilterChange({ showAnswered: true })
-                  }
-                >
-                  Answered Questions
-                </li>
-              </ul>
-            </nav>
-            <ul className="dashboard-list">
-              {questionIds.map((id) => (
-                <li key={id}>{<Question id={id} />}</li>
-              ))}
+      <div className="dashboard-container">
+        <div className="dashboard">
+          <nav className="nav-questions">
+            <ul>
+              <li
+                className={showAnswered ? "" : "selected"}
+                onClick={(e) =>
+                  this.handleFilterChange({ showAnswered: false })
+                }
+              >
+                Unanswered Questions
+              </li>
+              <li
+                className={showAnswered ? "selected" : ""}
+                onClick={(e) => this.handleFilterChange({ showAnswered: true })}
+              >
+                Answered Questions
+              </li>
             </ul>
-          </div>
+          </nav>
+          <ul className="dashboard-list">
+            {questionIds.map((id) => (
+              <li key={id}>{<Question id={id} />}</li>
+            ))}
+          </ul>
         </div>
-      )
+      </div>
     );
   }
 }
